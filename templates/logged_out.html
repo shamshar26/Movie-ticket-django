@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Logout{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class='container text-center bg-light' style="width:40%"'>
+  <br>
+  {% if user.is_authenticated %}
+    <form method="post">
+      {% csrf_token %}
+      <h5>Are you sure??</h5>
+      <button type="submit" class='btn btn-danger'>Yes,Log Out</button>
+      <a type="submit" class='btn btn-primary' href="{% url 'home'%}" >No</a>
+    </form>
+  {% else %}
+    <p>You are not logged in....</p>
+  {% endif %}
+  <br>
+</div>
+{% endblock %}

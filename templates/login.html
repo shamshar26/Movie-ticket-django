@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class='container text-center bg-light' style="width:40%; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+  <br>
+  <h2>Login</h2>
+  <div class='d-flex align-items-center justify-content-center'>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class='btn btn-primary' type="submit">Login</button>
+    </form>
+  </div>
+  <br>
+</div> 
+{% endblock %}

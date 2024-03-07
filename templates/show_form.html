@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Show{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class='container text-center bg-light' style="width:40%"'>
+  <br>
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" class='btn btn-success' value="Submit">
+  </form>
+  <br>
+</div>
+{% endblock %}

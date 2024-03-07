@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Movie{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class='container text-center bg-light' style="width:40%"'>
+  <br>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    {% if movie.movie_image %}
+    {{ movie.movie_image.url }}
+    {% endif %}
+    <input type="submit" class='btn btn-success' value="Submit">
+  </form>
+  <br>
+</div>
+{% endblock %}

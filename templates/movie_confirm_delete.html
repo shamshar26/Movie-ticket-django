@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Medicine{% endblock title %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class='container text-center bg-light' style="width:40%"'>
+<br>
+    <h5>Are you sure you want to delete the movie '{{ movie.movie_name}}'?</h5>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" class='btn btn-danger' value="Yes, delete.">
+      <a type="submit" class='btn btn-primary' href="{% url 'home'%}" >No</a>
+    </form>
+    <br>
+</div>
+
+{% endblock %}

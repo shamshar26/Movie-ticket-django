@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+</head>
+<body>
+    <p>Dear {{ booking.user.username }},</p>
+    <p>Your movie ticket booking for {{ booking.show.movie.movie_name }} on {{ booking.show.show_date }} at {{ booking.show.show_time }} has been confirmed.</p>
+    <p>Booking ID: {{ booking.booking_id }}</p>
+    <p>Number of Tickets: {{ booking.no_of_tickets }}</p>
+    <p>Thank you for choosing our service!</p>
+</body>
+</html>

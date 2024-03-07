@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+  <h1>Welcome to bookMyMovie Admin Interface</h1>
+
+  <h2>Movies</h2>
+  <a class="btn btn-primary mb-3" href="{% url 'addMovie' %}">Add Movies</a>
+
+  {% if movie %}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Movie Name</th>
+            <th>Description</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for movie in movie %}
+            <tr>
+              <td>{{ movie.movie_name }}</td>
+              <td>{{ movie.description }}</td>
+              <td>{{ movie.release_date }}</td>
+              <td>
+                <a href="{% url 'editMovie' pk=movie.id %}" class="btn btn-sm btn-info">Edit</a>
+                <a href="{% url 'deleteMovie' pk=movie.id %}" class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No movies available.</p>
+  {% endif %}
+
+  <h2>Shows</h2>
+  <a class="btn btn-primary mb-3" href="{% url 'addShow' %}">Add Shows</a>
+
+  {% if show %}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Movie Name</th>
+            <th>Show Time</th>
+            <th>Show Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for show in show %}
+            <tr>
+              <td>{{ show.movie.movie_name }}</td>
+              <td>{{ show.show_time|date:"H:i A" }}</td>
+              <td>{{ show.show_date }}</td>
+              <td>{% if show.is_disabled %}<span style="color: red;">Disabled</span>{% endif %}</td>
+              <td>
+                <a href="{% url 'editShow' pk=show.id %}" class="btn btn-sm btn-info">Edit</a>
+                <a href="{% url 'deleteShow' pk=show.id %}" class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No shows available.</p>
+  {% endif %}
+</div>
+{% endblock content %}
